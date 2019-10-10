@@ -7,10 +7,10 @@ require 'pry'
 def crazy_scrapper
 
 page = Nokogiri::HTML(open("https://coinmarketcap.com/all/views/all/"))
-#name
+# name
 names_crypto = []
 page.xpath("//tbody//td//span//a").each do |n| names_crypto << n.text end
-
+# price
 price_crypto = []
 page.xpath("//td[5]//a").each do |pr| price_crypto << pr.content.delete('$').to_f end
 
